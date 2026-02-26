@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
+const API = "http://localhost:3000/api/notes"
 const notes = ref([])
 const title = ref('')
 const content = ref('')
@@ -11,7 +12,7 @@ const editContent = ref('')
 
 // fetch notes
 const loadNotes = async () => {
-  const response = await axios.get('http://localhost:3000/api/notes')
+  const response = await axios.get('API')
   notes.value = response.data
 }
 
@@ -21,7 +22,7 @@ onMounted(loadNotes)
 const addNote = async () => {
   if (!title.value || !content.value) return
 
-  await axios.post('http://localhost:3000/api/notes', {
+  await axios.post('API', {
     title: title.value,
     content: content.value
   })
@@ -33,7 +34,7 @@ const addNote = async () => {
 
 // delete notes
 const deleteNote = async (id) => {
-  await axios.delete(`http://localhost:3000/api/notes/${id}`)
+  await axios.delete(`{API}/${id}`)
   loadNotes()
 }
 
@@ -45,7 +46,7 @@ const startEdit = (note) => {
 }
 
 const updateNote = async () => {
-  await axios.put(`http://localhost:3000/api/notes/${editingId.value}`, {
+  await axios.put(`{API}/${editingId.value}`, {
     title: editTitle.value,
     content: editContent.value
   })
