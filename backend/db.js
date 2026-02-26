@@ -1,18 +1,20 @@
-const sqlite3 = require('sqlite3').verbose();
-const path = require('path');
+const sqlite3 = require("sqlite3").verbose();
+const path = require("path");
 
-// create database path safely
-const dbPath = path.join(__dirname, 'notes.db');
+// Railway writable directory
+const dbPath = process.env.RAILWAY_ENVIRONMENT
+  ? "/tmp/notes.db"
+  : path.join(__dirname, "notes.db");
 
 const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
-    console.error("Database connection error:", err);
+    console.error("Database error:", err.message);
   } else {
-    console.log("Database connected successfully");
+    console.log("Database connected successfully at:", dbPath);
   }
 });
 
-// create table automatically 
+// create table if not exists
 db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS notes (
