@@ -1,22 +1,27 @@
-const sqlite3 = require("sqlite3").verbose();
+const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
 
-// create the database file automatically
-const db = new sqlite3.Database("./notes.db", (err) => {
-    if (err) {
-        console.error("Database connection error:", err.message);
-    } else {
-        console.log("Connected to SQLite database.");
-    }
+// create database path safely
+const dbPath = path.join(__dirname, 'notes.db');
+
+const db = new sqlite3.Database(dbPath, (err) => {
+  if (err) {
+    console.error("Database connection error:", err);
+  } else {
+    console.log("Database connected successfully");
+  }
 });
 
-// create table
-db.run(`
+// create table automatically 
+db.serialize(() => {
+  db.run(`
     CREATE TABLE IF NOT EXISTS notes (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        title TEXT NOT NULL,
-        content TEXT NOT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT NOT NULL,
+      content TEXT NOT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )
-`);
+  `);
+});
 
 module.exports = db;
