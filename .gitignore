@@ -1,5 +1,6 @@
 node_modules/
-.env
-notes.db
 dist/
-.vscode/
+.env
+backend/notes.db
+frontend/node_modules/
+backend/node_modules/
