@@ -12,7 +12,7 @@ const editContent = ref('')
 
 // fetch notes
 const loadNotes = async () => {
-  const response = await axios.get('API')
+  const response = await axios.get(API)
   notes.value = response.data
 }
 
@@ -22,7 +22,7 @@ onMounted(loadNotes)
 const addNote = async () => {
   if (!title.value || !content.value) return
 
-  await axios.post('API', {
+  await axios.post(API, {
     title: title.value,
     content: content.value
   })
@@ -34,7 +34,7 @@ const addNote = async () => {
 
 // delete notes
 const deleteNote = async (id) => {
-  await axios.delete(`{API}/${id}`)
+  await axios.delete(`${API}/${id}`)
   loadNotes()
 }
 
@@ -46,7 +46,7 @@ const startEdit = (note) => {
 }
 
 const updateNote = async () => {
-  await axios.put(`{API}/${editingId.value}`, {
+  await axios.put(`${API}/${editingId.value}`, {
     title: editTitle.value,
     content: editContent.value
   })
