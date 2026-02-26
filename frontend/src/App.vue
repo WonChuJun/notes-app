@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
-const API = "https://notes-app-production-98b8.up.railway.app/api/notes"
+const API = import.meta.env.VITE_API_URL + "/api/notes"
 const notes = ref([])
 const title = ref('')
 const content = ref('')
