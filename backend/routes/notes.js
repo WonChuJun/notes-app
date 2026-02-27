@@ -28,7 +28,8 @@ router.get("/", (req, res) => {
         if (err) {
             return res.status(500).json({error: err.message});
         }
-        res.json(rows);
+        res.setHeader("Content-Type", "application/json");
+        res.send(JSON.stringify(rows, null, 2));
     });
 });
 
