@@ -16,6 +16,8 @@ const db = new sqlite3.Database(dbPath, (err) => {
 
 // create table if not exists
 db.serialize(() => {
+  db.run(`DROP TABLE IF EXISTS notes`);
+
   db.run(`
     CREATE TABLE IF NOT EXISTS notes (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
