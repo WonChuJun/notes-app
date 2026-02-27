@@ -1,77 +1,96 @@
-# Simple File Management System (Notes App)
+# Notes App (Full Stack CRUD Web Application)
 
 ## Overview
 
-This project is a full-stack web application that allows users to create, read, update, and delete notes.
-It demonstrates a RESTful architecture using Vue.js frontend, Node.js (Express) backend, and SQLite database.
+This project is a full-stack notes management web application that allows users to create, edit, and delete notes.
+The application demonstrates a complete client-server architecture using a modern web stack.
+
+The system stores notes in a database and displays them dynamically on the web page.
+
+---
+
+## Live Demo
+
+Frontend (User Interface):
+https://notes-app-lovat-eight.vercel.app
+
+Backend API:
+https://notes-app-production-98b8.up.railway.app/api/notes
+
+---
 
 ## Tech Stack
 
-Frontend:
+### Frontend
 
-* Vue.js (Vite)
+* Vue 3 (Vite)
 * Axios
+* HTML/CSS
 
-Backend:
+### Backend
 
 * Node.js
 * Express.js
+* REST API
+
+### Database
+
 * SQLite3
+
+### Deployment
+
+* Frontend: Vercel
+* Backend: Railway
+
+---
 
 ## Features
 
-* Add a note (title + content)
+* Create new notes
 * View all notes
-* Edit a note
-* Delete a note
+* Edit existing notes
+* Delete notes
+* Notes sorted by creation time
+* Persistent database storage
+* Full CRUD API
 
-## System Architecture
-
-Vue Frontend → REST API (Express) → SQLite Database
-
-The frontend sends HTTP requests using Axios to the backend API.
-The backend processes requests and performs database operations using SQLite.
+---
 
 ## API Endpoints
 
 | Method | Endpoint       | Description     |
 | ------ | -------------- | --------------- |
-| POST   | /api/notes     | Create a note   |
 | GET    | /api/notes     | Get all notes   |
 | GET    | /api/notes/:id | Get single note |
-| PUT    | /api/notes/:id | Update note     |
-| DELETE | /api/notes/:id | Delete note     |
+| POST   | /api/notes     | Create a note   |
+| PUT    | /api/notes/:id | Update a note   |
+| DELETE | /api/notes/:id | Delete a note   |
 
-## Running Locally
+---
 
-### Backend
+## How to Run Locally
+
+### 1. Clone repository
+
+git clone https://github.com/WonChuJun/notes-app.git
+
+### 2. Backend
 
 cd backend
 npm install
-npm run dev
+node server.js
 
-Runs on: http://localhost:3000
-
-### Frontend
+### 3. Frontend
 
 cd frontend
 npm install
 npm run dev
 
-Runs on: http://localhost:5173
+---
 
-## Development Process (AI Usage)
+## Author
 
-AI tools were used to:
+Won Chu Jun
+Bachelor of Computer Science Student
 
-* Understand REST API structure
-* Generate Express route templates
-* Debug CORS and environment issues
-
-All generated code was reviewed and modified manually to ensure correctness.
-
-## Future Improvements
-
-* Authentication
-* Search functionality
-* Tags/categories
+This project was developed as a full-stack web application practice and portfolio project.
